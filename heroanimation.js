@@ -1,6 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Register ScrollTrigger plugin
-  gsap.registerPlugin(ScrollTrigger);
+  // Register plugins
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+  // Initialize ScrollSmoother
+  ScrollSmoother.create({
+    wrapper: "#smooth-wrapper", // The outer container
+    content: "#smooth-content", // The inner scrollable container
+    smooth: 1.5, // Adjust smoothness (higher = smoother)
+    effects: true, // Enable effects like parallax
+  });
 
   // Target the hero-video element
   const video = document.querySelector("[hero-video]");
@@ -8,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Ensure the video element exists
   if (!video) {
     console.error("Element with [hero-video] attribute not found!");
-    return; // Exit if the target element is not found
+    return;
   }
 
   // Set transformOrigin to the bottom
@@ -16,13 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Create the scroll animation
   gsap.to(video, {
-    scale: 1.2, // Final scale
+    scale: 1.2,
+    ease: "power2.out", // Add easing
     scrollTrigger: {
-      trigger: "[gsap-track]", // The element that triggers the scroll
-      start: "top mid", // When the top of gsap-track hits the middle of the viewport
-      end: "bottom top", // When the bottom of gsap-track leaves the top of the viewport
-      scrub: true, // Smooth scrubbing effect
-      markers: true, // Visualize the scroll trigger bounds
+      trigger: "[gsap-track]",
+      start: "top mid",
+      end: "bottom top",
+      scrub: true,
+      markers: true,
     },
   });
 });

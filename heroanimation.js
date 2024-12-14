@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(ScrollTrigger);
 
     // Target the hero-video element
-    const video = document.querySelector("#hero-video");
+    const video = document.querySelector("[hero-video]");
 
     // Create the scroll animation
     gsap.to(video, {

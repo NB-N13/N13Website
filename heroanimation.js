@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Create the scroll animation
   gsap.to(video, {
-    scale: 1.5, // Final scale
+    scale: 1.2, // Final scale
     scrollTrigger: {
       trigger: "[gsap-track]", // The element that triggers the scroll
       start: "top mid", // When the top of gsap-track hits the middle of the viewport
